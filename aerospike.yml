@@ -15,7 +15,16 @@ services:
         - source: conffile
           target: aerospike.conf
           mode: 0440
-    
+        ulimits:
+          nproc: 655350
+          nofile:
+            soft: 200000
+            hard: 400000
+        volumes:
+            - /mnt0:/opt/aerospike/data1
+            - /mnt1:/opt/aerospike/data2
+
+
     meshworker:
         image: aerospike/aerospike-tools:latest
         networks:
@@ -44,3 +53,5 @@ secrets:
         file: ./aerospike.conf
     discoveryfile:
         file: ./discovery.py
+
+
