@@ -23,6 +23,8 @@ services:
         volumes:
             - /mnt0:/opt/aerospike/data1
             - /mnt1:/opt/aerospike/data2
+        ports:
+            - "127.0.0.1:3000:3000"
 
 
     meshworker:
